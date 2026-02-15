@@ -110,4 +110,4 @@ This framework can be extended to include other machine learning algorithms or f
 loan_data.csv – Input dataset
 
 Author Katlego Mathebula
-loan_approval_decision_tree.R – Full R script for model training and evaluati
+loan_approval_decision_tree.R – Full R script for model training and evaluation
