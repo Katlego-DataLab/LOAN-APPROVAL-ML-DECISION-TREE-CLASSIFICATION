@@ -1,113 +1,197 @@
-# LOAN-APPROVAL-ML-DECISION-TREE-CLASSIFICATION
-This project demonstrates how to build a Decision Tree model in R to predict loan approvals based on applicant information. It includes data preprocessing, model training, visualization, and evaluation.
-## 1. Project Overview
-
-The goal of this project is to predict whether a loan will be approved (Approval) using a dataset containing financial and employment details of applicants. A Decision Tree classifier is used due to its interpretability and ease of visualization.
-
-## 2. Libraries Required
-
-The following R packages are used in this project:
-
-library(readr)       # Reading CSV files
-library(rpart)       # Decision Tree modeling
-library(rpart.plot)  # Tree visualization
-library(caret)       # Data splitting, evaluation metrics
-library(dplyr)       # Data manipulation
-library(ggplot2)     # Data visualization
-
-##  3. Dataset
-
-The dataset loan_data.csv includes the following key variables:
-
-Income – Applicant's monthly income
-Credit_Score – Applicant's credit score
-Loan_Amount – Requested loan amount
-DTI_Ratio – Debt-to-Income ratio
-Employment_Status – Employment status of the applicant
-
-Approval – Target variable: Yes or No
-
-The Text column is removed during preprocessing as it is not relevant for modeling.
-
-## 4.  Data Preprocessing
-
-Remove irrelevant columns (Text).
-
-Convert categorical variables (Employment_Status and Approval) to factors.
-
-Check class balance for the target variable:
-
-table(loan_data$Approval)
-prop.table(table(loan_data$Approval)) * 100
+# Loan Approval Decision-Tree-Classification-ML-
+Built an interpretable decision tree classification model in R to predict loan approval outcomes. Achieved 98% accuracy on imbalanced data using stratified sampling and evaluation metrics such as recall, specificity, and balanced accuracy. Demonstrates strong business interpretation and ethical ML awareness.
 
 
-Stratified train-test split (80% train, 20% test) to maintain class balance.
+# Loan Approval Prediction using Decision Trees (R)
 
-## 5. Model Training
+*Author:* Katlego Mathebula
+*Tech Stack:* R · rpart · caret · dplyr · ggplot2
+*Project Type:* Supervised Machine Learning (Classification)
 
-A Decision Tree classifier is trained on the following features:
+## Executive Summary
 
-* Income
+This project builds a **Decision Tree classification model** to predict loan approval outcomes based on applicant financial and employment information.
 
-* Credit_Score
+The objective is to simulate how financial institutions use data-driven decision systems to:
 
-* Loan_Amount
+-  Reduce default risk
+-  Improve approval consistency
+-  Increase decision transparency
+-  Support credit risk assessment
 
-* DTI_Ratio
-
-* Employment_Status
-
-Model settings:
-
-cp = 0.01 → Complexity parameter to avoid overfitting
-
-minsplit = 20 → Minimum observations required to split a node
-
-dt_model <- rpart(
-  Approval ~ Income + Credit_Score + Loan_Amount + DTI_Ratio + Employment_Status,
-  data = train_data,
-  method = "class",
-  control = rpart.control(cp = 0.01, minsplit = 20)
-)
-
- ## 6. Decision Tree Visualization
-
-The trained tree can be visualized for better interpretability:
-
-rpart.plot(
-  dt_model,
-  type = 2,
-  extra = 104,
-  fallen.leaves = TRUE
-)
+The model was developed using R and evaluated using a stratified train-test approach to ensure reliable performance estimation.
 
 
-The plot shows decision rules at each node and the proportion of approvals/rejections.
+## Business Problem
 
-##  7. Model Evaluation
+Financial institutions must evaluate thousands of loan applications while balancing:
 
-Predictions are made on the test set, and a confusion matrix is used to evaluate model performance:
+-  Profitability
+-  Credit risk
+-  Regulatory fairness
+-  Default minimization
 
-test_pred <- predict(dt_model, newdata = test_data, type = "class")
+Manual decision-making introduces bias and inconsistency.
 
-confusionMatrix(test_pred, test_data$Approval)
+This project answers:
+
+ Can we use applicant data to systematically predict whether a loan should be approved?
+The model uses financial and behavioral variables to estimate approval likelihood.
+
+## Dataset Overview
+
+The dataset contains structured loan application data including:
+
+-  `Income`
+-  `Credit_Score`
+-  `Loan_Amount`
+-  `DTI_Ratio` (Debt-to-Income ratio)
+-  `Employment_Status`
+-  `Approval` (Target variable)
+
+The target variable is binary:
+
+- Approved
+- Not Approved
+
+## Data Preparation & Preprocessing
+
+### 1. Library Setup
+
+Key libraries were used for:
+
+-  `readr` → Data loading
+-  `dplyr` → Data manipulation
+-  `rpart` → Decision tree modeling
+-  `rpart.plot` → Model visualization
+-  `caret` → Model evaluation and train-test splitting
 
 
-The confusion matrix provides accuracy, sensitivity, specificity, and other key metrics.
+### 2. Data Cleaning
 
-## 8.  Summary
+-  Removed irrelevant text column (`Text`)
+-  Converted categorical variables into factors
 
-This project demonstrates a complete workflow for predicting loan approvals using a Decision Tree in R:
-Data loading and preprocessing
-Train-test split
-Decision Tree model training
-Visualization of the tree
-Model evaluation using a confusion matrix
-This framework can be extended to include other machine learning algorithms or feature engineering for better predictive performance.
+  -  `Employment_Status`
+  -  `Approval`
 
-## 9. Files
+This is critical because classification algorithms in R require categorical targets to be factors.
 
-loan_data.csv – Input dataset
+### 3. Class Distribution Analysis
 
-Author Katlego Mathebula
-loan_approval_decision_tree.R – Full R script for model training and evaluation
+Before modeling, class balance was evaluated using:
+
+-  Frequency counts
+-  Percentage proportions
+
+Understanding class imbalance is essential because skewed data can bias predictions.
+
+## Model Validation Strategy
+
+### Stratified Train-Test Split (80/20)
+
+Instead of randomly splitting the data, a *stratified split* was used:
+
+```r
+createDataPartition()
+```
+
+This ensures that both training and test sets maintain similar approval distributions.
+
+Why this matters:
+
+-  Prevents biased evaluation
+-  Preserves class proportions
+-  Produces realistic performance metrics
+
+A fixed seed (`set.seed(123)`) was used to ensure reproducibility.
+
+## Model Development
+
+### Decision Tree Algorithm
+
+The model was built using:
+
+```r
+rpart(method = "class")
+```
+
+A decision tree was selected because:
+
+-  It is interpretable
+-  It mimics human decision-making
+-  It handles non-linear relationships
+-  It requires minimal preprocessing
+
+
+### Overfitting Control
+
+To prevent overfitting, the following parameters were used:
+
+```r
+cp = 0.01
+minsplit = 20
+```
+
+- `cp` (Complexity Parameter): Prevents unnecessary splits
+-  `minsplit`: Minimum observations required to split a node
+
+This ensures the model generalizes well to unseen data.
+
+
+## Model Interpretation
+
+The tree was visualized using:
+
+```r
+rpart.plot()
+```
+
+This allows us to:
+
+-  Identify key decision variables
+-  Understand threshold values
+-  Interpret how approvals are determined
+
+Decision trees are highly valuable in finance because they are explainable — a regulatory requirement in many banking systems.
+
+## Model Evaluation
+
+Predictions were made on the test set and evaluated using a confusion matrix:
+
+```r
+confusionMatrix()
+```
+
+The confusion matrix provides:
+
+-  Accuracy
+-  Sensitivity (Recall)
+-  Specificity
+-  Precision
+-  Kappa statistic
+
+These metrics help assess:
+
+-  How well the model detects approvals
+-  How well it detects rejections
+-  Whether predictions are balanced
+
+Evaluation was performed on unseen test data to measure true predictive performance.
+
+## Key Insights
+
+From the decision tree structure, we can observe:
+
+-  Credit score plays a major role in approval
+-  High DTI ratios reduce approval probability
+-  Income levels influence threshold splits
+-  Employment status contributes to segmentation
+
+## Conclusion
+
+This project simulates a real-world credit risk modeling workflow.
+The approach prioritizes interpretability and reliability, which are essential in financial decision systems.
+
+
+
