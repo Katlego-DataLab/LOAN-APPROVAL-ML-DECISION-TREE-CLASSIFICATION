@@ -1,6 +1,6 @@
 # 🏦 Loan Approval Prediction using Decision Trees
 
-**Author:** Katlego Mathebula | **Date:** April 2026 | **Tech Stack:** R · rpart · caret · dplyr · ggplot2 · pROC
+**Author:** Katlego Mathebula  | **Tech Stack:** R · rpart · caret · dplyr · ggplot2 · pROC
 
 [![R Version](https://img.shields.io/badge/R-4.0+-blue.svg)](https://www.r-project.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
