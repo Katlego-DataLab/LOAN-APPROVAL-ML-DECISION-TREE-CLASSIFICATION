@@ -165,7 +165,7 @@ Step 7: Stratified train-test split (80/20)
 
 ---
 
-## 🔍 Exploratory Data Analysis
+##  Exploratory Data Analysis
 
 ### Key Statistical Insights
 
@@ -182,7 +182,7 @@ Mean DTI Ratio       28.3%            41.7%           -13.4% ***
 
 ### Visual Analysis
 
-#### 📊 Credit Score Distribution
+####  Credit Score Distribution
 > Approved median: 715 | Rejected median: 592 — a 123-point gap is the primary separator.
 
 ![Credit Score Distribution](https://github.com/Katlego-DataLab/LOAN-APPROVAL-ML-DECISION-TREE-CLASSIFICATION/blob/main/plot_credit_score.png)
@@ -203,14 +203,14 @@ Mean DTI Ratio       28.3%            41.7%           -13.4% ***
 
 ---
 
-#### 📊 Employment Status Impact
+####  Employment Status Impact
 > Employed: 78% approval rate | Unemployed: 12% — employment is a strong signal.
 
 ![Employment Status](https://github.com/Katlego-DataLab/LOAN-APPROVAL-ML-DECISION-TREE-CLASSIFICATION/blob/main/plot_employment.png)
 
 ---
 
-## 🌳 Model Development
+##  Model Development
 
 ### Decision Tree Structure (Pruned)
 
@@ -287,11 +287,11 @@ Predicted  Approved │  287   │    48    │  335
 | XGBoost | 87.0% | 0.908 | ⭐ | 0.20 sec |
 | Industry Baseline | 80.0% | 0.750 | — | 3 days |
 
-> ✅ **Decision Tree selected** for regulatory explainability, minimal preprocessing, fast inference, and easy production integration.
+> **Decision Tree selected** for regulatory explainability, minimal preprocessing, fast inference, and easy production integration.
 
 ---
 
-## 🎯 Feature Importance Analysis
+##  Feature Importance Analysis
 
 ![Feature Importance](https://github.com/Katlego-DataLab/LOAN-APPROVAL-ML-DECISION-TREE-CLASSIFICATION/blob/main/plot_feature_importance.png)
 
@@ -364,7 +364,7 @@ Annual Savings: $1,475,000 (59% reduction)
 
 ---
 
-## 🚀 Installation & Usage
+##  Installation & Usage
 
 ### Prerequisites
 
@@ -404,23 +404,21 @@ source("loan_approval_model.R")
 ### Expected Console Output
 
 ```
-============================================================
+
 DATA LOADED SUCCESSFULLY
 Rows: 2847  |  Columns: 7
-============================================================
 
-============================================================
 MODEL PERFORMANCE
-============================================================
+
 Accuracy:     0.845
 95% CI:       (0.811, 0.876)
 Sensitivity:  0.862
 Specificity:  0.817
 AUC:          0.892
 
-============================================================
+
 FILES EXPORTED
-============================================================
+
 1. loan_predictions.csv
 2. loan_model_metrics.csv
 3. loan_feature_importance.csv
@@ -484,7 +482,7 @@ $$F1 = 2 \times \frac{Precision \times Recall}{Precision + Recall} \qquad AUC = 
 
 **Author:** Katlego Mathebula — Data Scientist  
 **GitHub:** [@Katlego-DataLab](https://github.com/Katlego-DataLab)  
-**Project Status:** ✅ Completed | **Last Updated:** April 2026 | **License:** MIT
+**Project Status:**  Completed | **Last Updated:** April 2026 | **License:** MIT
 
 ---
 
